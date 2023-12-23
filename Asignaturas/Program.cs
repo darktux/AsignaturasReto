@@ -15,7 +15,7 @@ builder.Services.AddSqlServer<AsignaturesContext>("Data Source=LPTAHERNANDEZ;Ini
 builder.Services.AddScoped<IUser, User>();
 builder.Services.AddScoped<IAsignature, Asignature>();
 var app = builder.Build();
-
+ 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
