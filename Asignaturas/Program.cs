@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSqlServer<AsignaturesContext>("Data Source=LPTAHERNANDEZ;Initial Catalog=Asignature;User id=sa;password=seGuros2356*; TrustServerCertificate=True;");
+builder.Services.AddSqlServer<AsignaturesContext>(builder.Configuration.GetConnectionString("asignature"));
 builder.Services.AddScoped<IUser, User>();
 builder.Services.AddScoped<IAsignature, Asignature>();
 var app = builder.Build();
