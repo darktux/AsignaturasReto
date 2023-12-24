@@ -17,7 +17,7 @@ namespace Asignaturas.Models
         public int IdentificationNumber { get; set; }
         public DateTime CreationDate { get; set; }
 
-        public virtual ICollection<AsignatureUser> AsignatureUsers { get; set; }
+        //public virtual ICollection<AsignatureUser> AsignatureUsers { get; set; }
 
     }
 }

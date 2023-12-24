@@ -7,5 +7,6 @@
 
         public bool CreateUser(Models.User user);
         public bool DeleteUser(Guid id);
+        public bool UpdateUser(Guid id, Models.User nuser);
     }
 }

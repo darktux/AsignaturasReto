@@ -46,6 +46,7 @@ namespace Asignaturas.Services
             try
             {
                 user.UserId = Guid.NewGuid();
+                user.CreationDate = DateTime.Now;
                 _dbContext.Users.Add(user);
                 _dbContext.SaveChanges();
                 result = true;
@@ -56,6 +57,7 @@ namespace Asignaturas.Services
             }
             return result;
         }
+
 
         public bool DeleteUser(Guid id)
         {
@@ -71,6 +73,27 @@ namespace Asignaturas.Services
                 }
             }
             catch (Exception ex)
+            {
+                _logger.LogError($"error obteniendo data de user {ex.Message.ToString()}");
+            }
+            return result;
+        }
+
+        public bool UpdateUser(Guid id, Models.User nuser)
+        {
+            bool result = false;
+            try {
+                Models.User user = _dbContext.Users.Find(id);
+                if(user != null)
+                {
+                    user.Name = nuser.Name;
+                    user.Email = nuser.Email;
+                    user.IdentificationType = nuser.IdentificationType;
+                    user.IdentificationNumber = nuser.IdentificationNumber;
+                    _dbContext.SaveChanges();
+                    result = true;
+                }
+            }catch (Exception ex)
             {
                 _logger.LogError($"error obteniendo data de user {ex.Message.ToString()}");
             }

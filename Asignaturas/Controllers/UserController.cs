@@ -61,5 +61,23 @@ namespace Asignaturas.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("UpdateUser/{id}")]
+        public IActionResult UpdateUser(Guid id, [FromBody] Models.User updatedUser) 
+        {
+            if(updatedUser == null)
+            {
+                return BadRequest("Debe ingresar los datos a modificar");
+            }
+            if (_user.UpdateUser(id, updatedUser))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("El usuario no existe o no se pudo actualizar");
+            }
+        }
+
     }
 }

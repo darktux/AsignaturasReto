@@ -2,7 +2,7 @@
 {
     public enum IdentificationType
     {
-        Cedula = 1,
+        Cedula,
         Pasaporte,
         TarjetaIdentidad,
         CedulaExtranjeria
