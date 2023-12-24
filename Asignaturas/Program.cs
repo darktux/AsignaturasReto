@@ -1,3 +1,5 @@
+using Asignatura.Services;
+using Asignatura.Services.Interfaces;
 using Asignaturas;
 using Asignaturas.Services;
 using Asignaturas.Services.Interfaces;
@@ -14,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSqlServer<AsignaturesContext>(builder.Configuration.GetConnectionString("asignature"));
 builder.Services.AddScoped<IUser, User>();
 builder.Services.AddScoped<IAsignature, Asignature>();
+builder.Services.AddScoped<IInscripcion, Inscripcion>();
 var app = builder.Build();
  
 // Configure the HTTP request pipeline.

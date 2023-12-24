@@ -4,10 +4,10 @@ namespace Asignaturas.Services.Interfaces
 {
     public interface IAsignature
     {
-        bool CreateAsignatureUser(AsignatureUser asignatureUser);
-        List<AsignatureUser> GetAsignatureUsers();
-        AsignatureUser GetAsignatureUserById(Guid id);
-        bool UpdateAsignatureUser(Guid id, AsignatureUser updatedAsignatureUser);
-        bool DeleteAsignatureUser(Guid id);
+        bool CreateAsignature(Models.Asignature asignature);
+        List<Models.Asignature> GetAsignature();
+        Models.Asignature GetAsignatureById(Guid id);
+        bool UpdateAsignature(Guid id, Models.Asignature updatedAsignature);
+        bool DeleteAsignature(Guid id);
     }
 }

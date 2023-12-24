@@ -13,24 +13,24 @@ namespace Asignaturas.Services
             _dbContext = dbContext;
         }
 
-        public List<AsignatureUser> GetAsignatureUsers()
+        public List<Models.Asignature> GetAsignature()
         {
-            return _dbContext.AsignatureUsers.ToList();
+            return _dbContext.Asignature.ToList();
         }
 
-        public AsignatureUser GetAsignatureUserById(Guid id)
+        public Models.Asignature GetAsignatureById(Guid id)
         {
-            return _dbContext.AsignatureUsers.Find(id);
+            return _dbContext.Asignature.Find(id);
         }
 
-        public bool CreateAsignatureUser(AsignatureUser asignatureUser)
+        public bool CreateAsignature(Models.Asignature asignature)
         {
             bool result = false;
             try
             {
-                asignatureUser.AsignatureUserId = Guid.NewGuid();
-                asignatureUser.CreationDate = DateTime.Now;
-                _dbContext.AsignatureUsers.Add(asignatureUser);
+                asignature.AsignatureId = Guid.NewGuid();
+                asignature.CreationDate = DateTime.Now;
+                _dbContext.Asignature.Add(asignature);
                 _dbContext.SaveChanges();
                 result = true;
             }catch (Exception ex) {
@@ -39,14 +39,14 @@ namespace Asignaturas.Services
             return result;
         }
 
-        public bool DeleteAsignatureUser(Guid id)
+        public bool DeleteAsignature(Guid id)
         {
             bool result = false;
-            try { 
-                AsignatureUser asignatureUser = _dbContext.AsignatureUsers.Find(id);
-                if (asignatureUser != null)
+            try {
+                Models.Asignature asignature = _dbContext.Asignature.Find(id);
+                if (asignature != null)
                 {
-                    _dbContext.AsignatureUsers.Remove(asignatureUser);
+                    _dbContext.Asignature.Remove(asignature);
                     _dbContext.SaveChanges();
                     result = true;
                 }
@@ -58,16 +58,16 @@ namespace Asignaturas.Services
             return result;
         }
 
-        public bool UpdateAsignatureUser(Guid id, AsignatureUser nasignatureUser)
+        public bool UpdateAsignature(Guid id, Models.Asignature nasignature)
         {
             bool result = false;
             try
             {
-                Models.AsignatureUser asignatureUser = _dbContext.AsignatureUsers.Find(id);
-                if (asignatureUser != null)
+                Models.Asignature asignature = _dbContext.Asignature.Find(id);
+                if (asignature != null)
                 {
-                    asignatureUser.NameAsignature = nasignatureUser.NameAsignature;
-                    asignatureUser.AreaTypes = nasignatureUser.AreaTypes;
+                    asignature.NameAsignature = nasignature.NameAsignature;
+                    asignature.AreaTypes = nasignature.AreaTypes;
                     _dbContext.SaveChanges();
                     result = true;
                 }

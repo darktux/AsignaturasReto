@@ -1,23 +1,15 @@
-﻿using Asignaturas.Enums;
+﻿using Asignaturas.Models;
 
-namespace Asignaturas.Models
+namespace Asignatura.Models
 {
     public class AsignatureUser
     {
-        //[Key]
         public Guid AsignatureUserId { get; set; }
-        //[ForeignKey("UserId")]
+
         public Guid UserId { get; set; }
-        //[Required]
-        //[MaxLength(50)]
-        public string NameAsignature { get; set; }
+        public User User { get; set; }
 
-        public AreaTypes AreaTypes { get; set; }
-
-        public DateTime CreationDate { get; set; }
-
-        //public virtual User User { get; set; }
-        //[NotMapped]
-        public string Detail { get; set; }
+        public Guid AsignatureId { get; set; }
+        public Asignature Asignature { get; set; }
     }
 }

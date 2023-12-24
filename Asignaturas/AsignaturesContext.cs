@@ -1,4 +1,5 @@
-﻿using Asignaturas.Models;
+﻿using Asignatura.Models;
+using Asignaturas.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Asignaturas
@@ -6,7 +7,7 @@ namespace Asignaturas
     public class AsignaturesContext : DbContext
     {
         public DbSet<Models.User> Users { get; set; }
-        public DbSet<AsignatureUser> AsignatureUsers { get; set; }
+        public DbSet<Asignature> Asignature { get; set; }
 
         public AsignaturesContext(DbContextOptions<AsignaturesContext> options) : base(options) { }
 
@@ -23,19 +24,29 @@ namespace Asignaturas
                 user.Property(x => x.CreationDate);
             });
 
+            modelBuilder.Entity<Asignature>(asignature =>
+            {
+                asignature.ToTable("Asignature");
+                asignature.HasKey(x => x.AsignatureId);
+                //asignature.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
+                asignature.Property(x => x.NameAsignature).IsRequired().HasMaxLength(50);
+                asignature.Property(x => x.AreaTypes);
+                asignature.Property(x => x.CreationDate);
+                asignature.Ignore(x => x.Detail);
+            });
 
             modelBuilder.Entity<AsignatureUser>(asignatureUser =>
             {
                 asignatureUser.ToTable("AsignatureUser");
                 asignatureUser.HasKey(x => x.AsignatureUserId);
-                //asignatureUser.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
-                asignatureUser.Property(x => x.NameAsignature).IsRequired().HasMaxLength(50);
-                asignatureUser.Property(x => x.AreaTypes);
-                asignatureUser.Property(x => x.CreationDate);
-                asignatureUser.Ignore(x => x.Detail);
+                //asignatureUser.HasOne(x => x.User)
+                //    .WithMany(u => u.AsignatureUsers)
+                //    .HasForeignKey(x => x.UserId);
+                //asignatureUser.HasOne(x => x.Asignature)
+                //    .WithMany(a => a.AsignatureUsers)
+                //    .HasForeignKey(x => x.AsignatureId);
             });
 
-            
         }
     }
 }

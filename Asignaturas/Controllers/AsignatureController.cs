@@ -22,23 +22,23 @@ namespace Asignatura.Controllers
 
         [HttpPost]
         [Route("CreateAsignature")]
-        public IActionResult CreateAsignature(AsignatureUser asignatureUser)
+        public IActionResult CreateAsignature(Asignaturas.Models.Asignature asignature)
         {
-            return Ok(_asignature.CreateAsignatureUser(asignatureUser));
+            return Ok(_asignature.CreateAsignature(asignature));
         }
 
         [HttpGet]
         [Route("GetAsignatures")]
         public IActionResult GetAsignature()
         {
-            return Ok(_asignature.GetAsignatureUsers());
+            return Ok(_asignature.GetAsignature());
         }
 
         [HttpGet]
         [Route("GetAsignatures/{id}")]
         public IActionResult GetAsignatureById(Guid id)
         {
-            return Ok(_asignature.GetAsignatureUserById(id));
+            return Ok(_asignature.GetAsignatureById(id));
         }
 
         [HttpDelete]
@@ -47,7 +47,7 @@ namespace Asignatura.Controllers
         {
             try
             {
-                if (_asignature.DeleteAsignatureUser(id))
+                if (_asignature.DeleteAsignature(id))
                 {
                     return Ok();
                 }
@@ -64,13 +64,13 @@ namespace Asignatura.Controllers
 
         [HttpPut]
         [Route("UpdateAsignature/{id}")]
-        public IActionResult UpdateAsignatureUser(Guid id, AsignatureUser asignatureUser)
+        public IActionResult UpdateAsignature(Guid id, Asignaturas.Models.Asignature asignature)
         {
-            if (asignatureUser == null)
+            if (asignature == null)
             {
                 return BadRequest("Debe ingresar los datos a modificar");
             }
-            if (_asignature.UpdateAsignatureUser(id, asignatureUser))
+            if (_asignature.UpdateAsignature(id, asignature))
             {
                 return Ok();
             }

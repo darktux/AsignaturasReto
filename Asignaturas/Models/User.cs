@@ -1,4 +1,5 @@
-﻿using Asignaturas.Enums;
+﻿using Asignatura.Models;
+using Asignaturas.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Asignaturas.Models
@@ -18,6 +19,7 @@ namespace Asignaturas.Models
         public DateTime CreationDate { get; set; }
 
         //public virtual ICollection<AsignatureUser> AsignatureUsers { get; set; }
+        //public ICollection<AsignatureUser> AsignatureUsers { get; set; }
 
     }
 }
