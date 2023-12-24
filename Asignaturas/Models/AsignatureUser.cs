@@ -16,7 +16,7 @@ namespace Asignaturas.Models
 
         public DateTime CreationDate { get; set; }
 
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
         //[NotMapped]
         public string Detail { get; set; }
     }

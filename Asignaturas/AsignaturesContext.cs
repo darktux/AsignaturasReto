@@ -12,17 +12,6 @@ namespace Asignaturas
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AsignatureUser>(asignatureUser =>
-            {
-                asignatureUser.ToTable("AsignatureUser");
-                asignatureUser.HasKey(x => x.AsignatureUserId);
-                asignatureUser.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
-                asignatureUser.Property(x => x.NameAsignature).IsRequired().HasMaxLength(50);
-                asignatureUser.Property(x => x.AreaTypes);
-                asignatureUser.Property(x => x.CreationDate);
-                asignatureUser.Ignore(x => x.Detail);
-            });
-
             modelBuilder.Entity<Models.User>(user =>
             {
                 user.ToTable("User");
@@ -33,6 +22,20 @@ namespace Asignaturas
                 user.Property(x => x.IdentificationNumber);
                 user.Property(x => x.CreationDate);
             });
+
+
+            modelBuilder.Entity<AsignatureUser>(asignatureUser =>
+            {
+                asignatureUser.ToTable("AsignatureUser");
+                asignatureUser.HasKey(x => x.AsignatureUserId);
+                //asignatureUser.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
+                asignatureUser.Property(x => x.NameAsignature).IsRequired().HasMaxLength(50);
+                asignatureUser.Property(x => x.AreaTypes);
+                asignatureUser.Property(x => x.CreationDate);
+                asignatureUser.Ignore(x => x.Detail);
+            });
+
+            
         }
     }
 }
