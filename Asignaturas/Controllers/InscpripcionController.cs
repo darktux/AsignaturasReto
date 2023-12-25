@@ -10,7 +10,7 @@ namespace Asignatura.Controllers
     {
         private readonly ILogger<InscpripcionController> _logger;
         private readonly IInscripcion _inscripcion;
-        private InscpripcionController(ILogger<InscpripcionController> logger, IInscripcion inscripcion)
+        public InscpripcionController(ILogger<InscpripcionController> logger, IInscripcion inscripcion)
         {
             _logger = logger;
             _inscripcion = inscripcion;

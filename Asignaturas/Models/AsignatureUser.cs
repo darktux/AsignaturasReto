@@ -7,9 +7,9 @@ namespace Asignatura.Models
         public Guid AsignatureUserId { get; set; }
 
         public Guid UserId { get; set; }
-        public User User { get; set; }
+        //public User User { get; set; }
 
         public Guid AsignatureId { get; set; }
-        public Asignature Asignature { get; set; }
+        //public Asignature Asignature { get; set; }
     }
 }

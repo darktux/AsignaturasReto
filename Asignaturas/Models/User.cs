@@ -1,4 +1,5 @@
 ﻿using Asignatura.Models;
+using Asignatura.Services;
 using Asignaturas.Enums;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,6 +21,7 @@ namespace Asignaturas.Models
 
         //public virtual ICollection<AsignatureUser> AsignatureUsers { get; set; }
         //public ICollection<AsignatureUser> AsignatureUsers { get; set; }
+        //public ICollection<Inscripcion> Inscripcions { get; set;}
 
     }
 }

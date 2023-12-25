@@ -1,4 +1,5 @@
 ﻿using Asignatura.Models;
+using Asignatura.Services;
 using Asignaturas.Enums;
 
 namespace Asignaturas.Models
@@ -21,6 +22,7 @@ namespace Asignaturas.Models
         //public ICollection<AsignatureUser> AsignatureUsers { get; set; }
         //[NotMapped]
         public string Detail { get; set; }
+        //public ICollection<Inscripcion> Inscripcions { get; set; }
 
     }
 }
