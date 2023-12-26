@@ -31,13 +31,7 @@ namespace Asignatura.Controllers
         [Route("GetAsignatures")]
         public IActionResult GetAsignature()
         {
-            try
-            {
                 return Ok(_asignature.GetAsignature());
-            }catch (Exception ex)
-            {
-                return BadRequest($"error {ex.Message}");
-            }
         }
 
         [HttpGet]

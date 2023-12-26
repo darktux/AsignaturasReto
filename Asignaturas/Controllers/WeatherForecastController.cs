@@ -13,10 +13,10 @@ namespace Asignaturas.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        public IUser _hello;
+        public IHello _hello;
         AsignaturesContext _dbcontext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IUser hello, AsignaturesContext dbcontext)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IHello hello, AsignaturesContext dbcontext)
         {
             _logger = logger;
             _hello = hello;

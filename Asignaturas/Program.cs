@@ -17,6 +17,7 @@ builder.Services.AddSqlServer<AsignaturesContext>(builder.Configuration.GetConne
 builder.Services.AddScoped<IUser, User>();
 builder.Services.AddScoped<IAsignature, Asignature>();
 builder.Services.AddScoped<IInscripcion, Inscripcion>();
+builder.Services.AddScoped<IHello, Hello>();
 var app = builder.Build();
  
 // Configure the HTTP request pipeline.
