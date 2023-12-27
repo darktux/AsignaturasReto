@@ -22,7 +22,18 @@ namespace Asignatura.Controllers
         {
             try
             {
-                return Ok(_inscripcion.InscribirUsuario(asignatureUser));
+                bool asignaturaExiste = _inscripcion.ConsultarAsignaturaExistente(asignatureUser.AsignatureId);
+                bool usuarioExiste = _inscripcion.ConsultaUsuarioExistente(asignatureUser.UserId);
+                if (!asignaturaExiste)
+                {
+                    return BadRequest("La asignatura no existe. No se pudo realizar la inscripción.");
+                }else if (!usuarioExiste)
+                {
+                    return BadRequest("El usuario no existe. No se pudo realizar la inscripción.");
+                }else
+                {
+                    return Ok(_inscripcion.InscribirUsuario(asignatureUser));
+                }
             }catch (Exception ex)
             {
                 return BadRequest(ex.Message.ToString());

@@ -1,6 +1,7 @@
 ﻿using Asignatura.Controllers;
 using Asignatura.Services.Interfaces;
 using Asignaturas;
+using Asignaturas.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Asignatura.Services
@@ -9,10 +10,21 @@ namespace Asignatura.Services
     {
         private readonly ILogger<Inscripcion> _logger;
         private readonly AsignaturesContext _dbContext;
+        //private readonly Asignature Asignaturas;
         public Inscripcion(ILogger<Inscripcion> logger, AsignaturesContext dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;
+        }
+
+        public bool ConsultarAsignaturaExistente(Guid asignatureId)
+        {
+            return _dbContext.Asignature.Any(a => a.AsignatureId == asignatureId);
+        }
+
+        public bool ConsultaUsuarioExistente(Guid userId)
+        {
+            return _dbContext.Users.Any(u => u.UserId == userId);
         }
 
         public bool InscribirUsuario(Models.AsignatureUser asignatureUser)
