@@ -1,4 +1,6 @@
 ﻿
+using Asignaturas.Models;
+
 namespace Asignatura.Services.Interfaces
 {
     public interface IInscripcion
@@ -6,5 +8,6 @@ namespace Asignatura.Services.Interfaces
         bool ConsultarAsignaturaExistente(Guid asignatureId);
         bool ConsultaUsuarioExistente(Guid userId);
         bool InscribirUsuario(Models.AsignatureUser asignatureUser);
+        List<User> ObtenerUsuariosInscritosEnAsignatura(Guid asignatureId);
     }
 }

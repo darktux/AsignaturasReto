@@ -39,5 +39,12 @@ namespace Asignatura.Controllers
                 return BadRequest(ex.Message.ToString());
             }
         }
+
+        [HttpGet]
+        [Route("UsuariosInscritos")]
+        public IActionResult ObtenerUsuariosInscritos(Guid AsignatureId)
+        {
+            return Ok(_inscripcion.ConsultaUsuarioExistente(AsignatureId));
+        }
     }
 }

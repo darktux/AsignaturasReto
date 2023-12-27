@@ -8,6 +8,7 @@ namespace Asignaturas
     {
         public DbSet<Models.User> Users { get; set; }
         public DbSet<Asignature> Asignature { get; set; }
+        public DbSet<AsignatureUser> AsignatureUser { get; set; }
 
         public AsignaturesContext(DbContextOptions<AsignaturesContext> options) : base(options) { }
 
@@ -39,6 +40,8 @@ namespace Asignaturas
             {
                 asignatureUser.ToTable("AsignatureUser");
                 asignatureUser.HasKey(x => x.AsignatureUserId);
+                asignatureUser.Property(x => x.AsignatureId);
+                asignatureUser.Property(x => x.UserId);
                 //asignatureUser.HasOne(x => x.User)
                 //    .WithMany(u => u.AsignatureUsers)
                 //    .HasForeignKey(x => x.UserId);

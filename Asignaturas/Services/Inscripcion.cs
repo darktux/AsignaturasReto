@@ -1,4 +1,5 @@
 ﻿using Asignatura.Controllers;
+using Asignatura.Models;
 using Asignatura.Services.Interfaces;
 using Asignaturas;
 using Asignaturas.Models;
@@ -42,6 +43,21 @@ namespace Asignatura.Services
                 _logger.LogError($"error obteniendo data {ex.Message.ToString()}");
             }
             return result;
+        }
+
+        public List<User> ObtenerUsuariosInscritosEnAsignatura(Guid asignaturaId)
+        {
+            var usuariosInscritos = _dbContext.AsignatureUser
+                .Where(au => au.AsignatureId == asignaturaId)
+                .Join(
+                    _dbContext.Users,
+                    au => au.UserId,
+                    u => u.UserId,
+                    (au, u) => u
+                )
+                .ToList();
+
+            return usuariosInscritos;
         }
     }
 }
